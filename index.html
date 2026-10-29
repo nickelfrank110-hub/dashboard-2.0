@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">CoreMetrics</div>
+            <nav class="nav-links">
+                <a href="#" class="active">Overview</a>
+                <a href="#">Analytics</a>
+                <a href="#">Settings</a>
+            </nav>
+        </aside>
+
+        <!-- Main Dashboard Content -->
+        <main class="main-content">
+            <header class="top-header">
+                                <div>
+                    <h1>Financial Overview</h1>
+                    <p id="current-date"></p>
+                </div>
+                <button type="button" id="export-btn" class="btn-secondary">Export CSV</button>
+            </header>
+
+            <!-- Cards Grid (Where JS will inject real totals) -->
+            <section class="stats-grid">
+                <div class="card card-revenue">
+                    <h3>Total Revenue</h3>
+                    <p class="stat-number" id="total-revenue">$0.00</p>
+                </div>
+                <div class="card card-expenses">
+                    <h3>Total Expenses</h3>
+                    <p class="stat-number" id="total-expenses">$0.00</p>
+                </div>
+                <div class="card card-profit">
+                    <h3>Net Profit Margin</h3>
+                    <p class="stat-number" id="net-profit">0%</p>
+                </div>
+            </section>
+            
+                        <section class="card chart-card">
+                <h2>Spending by category</h2>
+                <div id="chart"></div>
+            </section>
+            <!-- Data Interaction Area -->
+            <section class="dashboard-body">
+                <!-- Interactive Input Form -->
+                <div class="form-container">
+                    <h2>Log New Transaction</h2>
+                    <form id="transaction-form">
+                        <div class="form-group">
+                            <label for="desc">Description</label>
+                            <input type="text" id="desc" placeholder="e.g., Server Hosting" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" placeholder="0.00" step="0.01" min="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type</label>
+                            <select id="type">
+                                <option value="revenue">Revenue (+)</option>
+                                <option value="expense">Expense (-)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit">Add Transaction</button>
+                                                <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option>Subscriptions</option>
+                                <option>Services</option>
+                                <option>Hosting</option>
+                                <option>Payroll</option>
+                                <option>Marketing</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Dynamic Data Table -->
+                <div class="table-container">
+                    <h2>Recent Activities</h2>
+                    <div class="table-scroll">
+                      <table id="transaction-table">
+                          <thead>
+                              <tr>
+                                <th>Description</th>
+                                                                                              <th>Category</th>
+                                  <th>Date</th>
+                                  <th>Type</th>
+                                  <th>Amount</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody id="table-body">
+                            <!-- JS will inject rows here dynamically -->
+                          </tbody>
+                      </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+                          </html>
+                          
